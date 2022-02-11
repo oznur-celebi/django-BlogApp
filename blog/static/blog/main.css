@@ -74,7 +74,7 @@ body {
   
   .account-img {
     height: 125px;
-    width: 125px;
+    width: 300px;
     margin-right: 20px;
     margin-bottom: 16px;
   }
@@ -82,9 +82,4 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
-   .post-img {
-    height: 125px;
-    width: 200px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  } 
+ 
