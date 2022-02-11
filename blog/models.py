@@ -10,7 +10,7 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    # cover = models.ImageField(default='post.jpg', upload_to='profile_pics/cover/')
+    cover = models.ImageField(default='post.jpg', upload_to='profile_pics/cover/')
     category = models.CharField(max_length=20, choices=paths, default='fullstack')
     status =models.CharField(max_length=20, choices=status, default='draft')
 
