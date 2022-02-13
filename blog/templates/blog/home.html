@@ -9,8 +9,14 @@
               <a class="mr-2" href="#">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
-           
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <hr>
+            <div>
+            <span class="material-icons text-primary" style="font-size: 22px;">thumb_up</span><span style="font-size: 14px;">   6 </span>
+            <span class="material-icons text-primary" style="font-size: 20px;">x visibility </span><span style="font-size: 14px;">   6 </span>
+            <span class="material-icons text-primary" style="font-size: 20px;">x comment </span><span style="font-size: 14px;">   6 </span>
+            </div>
+            <hr>
+            <h2><a class="article-title" href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h2>
             <img class=" account-img" src="{{post.cover.url }}">
             <p class="article-content">{{ post.content }}</p>
           </div>
