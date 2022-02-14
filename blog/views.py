@@ -1,6 +1,7 @@
-from calendar import c
-from urllib import response
-from django.shortcuts import redirect, render
+from multiprocessing import context
+from django.http import HttpResponseRedirect
+# from urllib import response
+from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.urls import reverse
 from django.views.generic import (
@@ -14,6 +15,16 @@ from django.views.generic import (
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.contrib.auth.decorators import login_required
+
+def like_view(request, id):
+    post = Post.objects.get(id=id)
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(id)]))
+
+
+def like_post(request):
+
+    return redirect('posts:post-detail',)
 
 def home(request):
     context = {
@@ -32,6 +43,19 @@ class PostListView(ListView):
 def post_detail(request, id):
     post = Post.objects.get(id=id)
     return render(request, "blog/post_detail.html", {"post": post})
+    
+# def get_context_data(self, *args, **kwargs):
+		
+# 		stuff = get_object_or_404(Post, id=self.kwargs['id'])
+# 		total_likes = stuff.total_likes()	
+		
+# 		liked = False
+# 		if stuff.likes.filter(id=self.request.user.id).exists():
+# 			liked = True
+
+# 		context["total_likes"] = total_likes()
+# 		context["liked"] = liked
+# 		return context
 
 
 def add_comment(request, id):

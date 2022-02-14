@@ -16,13 +16,12 @@
     <div>
       <span class="material-icons text-primary" style="font-size: 22px"
         >thumb_up</span
-      ><span style="font-size: 14px"> 6 </span>
+      >{{total_likes.count}} <span style="font-size: 14px"> </span>
       <span class="material-icons text-primary" style="font-size: 20px"
         >x visibility </span
       ><span style="font-size: 14px"> 6 </span>
       <span class="material-icons text-primary" style="font-size: 20px"
-        >x comment </span
-      ><span style="font-size: 14px"> {{post.comments.count}} </span>
+        >x comment </span><span style="font-size: 14px"> {{post.comments.count}} </span>
     </div>
     <hr />
     <h2><a class="article-title">{{post.title }}</a></h2>
@@ -31,10 +30,13 @@
     <hr />
     <div>
       <h5>Enjoy this post? Give it a LIKE!</h5>
-      <button class="btn btn-outline-primary">
-        <span class="material-icons text-primary" style="font-size: 22px"
-          >thumb_up</span>
-      </button>
+      <form action ={% url 'posts:like-post' %} method="POST"> 
+        <input type="hidden" name ="post_id" value ={{post.id}}>
+        {% csrf_token %}
+        <button class="btn btn-outline-primary">
+        <span class="material-icons text-primary" style="font-size: 22px">thumb_up</span>
+        </button>
+     </form>
     </div>
     <hr />
 
