@@ -28,6 +28,7 @@ def home(request):
 
 class PostListView(ListView):
     model =Post
+    fields = ['title', 'title_tag','date_posted','cover','category', 'status']
     template_name ='blog/home.html' #<app>/<model>_<viewtype>.html
     context_object_name ='posts'
     ordering =['-date_posted']
@@ -152,7 +153,7 @@ def add_comment(request, id):
 
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
-    fields = ['title', 'content','date_posted','cover','category', 'status']
+    fields = ['title', 'title_tag','content','date_posted','cover','category', 'status']
     
      
     def form_valid(self,form):
@@ -163,7 +164,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields =['title', 'content','date_posted','cover','category', 'status']
+    fields =['title', 'title_tag','content','date_posted','cover','category', 'status']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -191,12 +192,12 @@ def about(request):
 
 
 # def like_view(request, id):
-#     post = Post.objects.get(id=id)
-#     liked=False
+#      post = Post.objects.get(id=id)
+#      liked=False
 
-#     if post.likes.filter(id=request.user.id).exists():
-# 	    post.likes.remove(request.user)
-# 	    liked = False
+#      if post.likes.filter(id=request.user.id).exists():
+#  	    post.likes.remove(request.user)
+#  	    liked = False
     
 #      else:
 # 	    post.likes.add(request.user)
