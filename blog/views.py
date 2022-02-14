@@ -16,15 +16,9 @@ from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.contrib.auth.decorators import login_required
 
-def like_view(request, id):
-    post = Post.objects.get(id=id)
-    post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('post-detail', args=[str(id)]))
 
 
-def like_post(request):
 
-    return redirect('posts:post-detail',)
 
 def home(request):
     context = {
@@ -193,3 +187,19 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
+
+
+
+# def like_view(request, id):
+#     post = Post.objects.get(id=id)
+#     liked=False
+
+#     if post.likes.filter(id=request.user.id).exists():
+# 	    post.likes.remove(request.user)
+# 	    liked = False
+    
+#      else:
+# 	    post.likes.add(request.user)
+# 		liked = True
+         
+#      return HttpResponseRedirect(reverse('post-detail', args=[str(id)]))
