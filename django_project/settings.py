@@ -30,7 +30,7 @@ SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['oznurblogapp.herokuapp.com']
+ALLOWED_HOSTS = ['oznurblogapp.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -161,5 +161,6 @@ LOGIN_URL ='login'
 
 
 django_heroku.settings(locals())
+DISABLE_COLLECTSTATIC = 1
 
 # AUTH_USER_MODEL = 'users.User'
