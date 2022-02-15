@@ -31,7 +31,7 @@ SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['oznurblogapp.herokuapp.com']
 
 
 # Application definition
@@ -126,18 +126,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+# STATICFILES_DIRS = (
+#  os.path.join(BASE_DIR, 'static'),
+# )
+
 STATICFILES_DIRS = (
- os.path.join(BASE_DIR, 'static'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT =  os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
+#
 # STATIC_URL = 'static/'
 
 # MEDIA_ROOT = BASE_DIR /'media'
